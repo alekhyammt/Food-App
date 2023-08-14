@@ -1,47 +1,30 @@
 import RestroCards from "./RestroCards";
-import './BodyComponent.css';
+import "./BodyComponent.css";
+import { useState } from "react";
+import restro_List from "../../utils/mockData"
 
 const BodyComponent = () => {
-    const restro_List=[{
-      type: "restaurant",
-      data: {
-        id: "334475",
-        name: "KFC",
-        area: "BTM Layout",
-        cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
-        costForTwo: 40000,
-        cloudinaryImageId: "xqwpuhgnsaf18te7zvtv",
-        costForTwoString: "₹400 FOR TWO",
-        deliveryTime: 36,
-        avgRating: "3.8",
-        totalRatings: 500,
-      },
-      subtype: "basic",
+  const [restroList, setRestroList] = useState(restro_List);
 
-    },
-{      type: "restaurant",
-      data: {
-        id: "334470",
-        name: "Biryani",
-        area: "BTM Layout",
-        cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
-        costForTwo: 40000,
-        cloudinaryImageId: "bmwn4n4bn6n1tcpc8x2h",
-        costForTwoString: "₹400 FOR TWO",
-        deliveryTime: 36,
-        avgRating: "3.8",
-        totalRatings: 500,
-      },
-      subtype: "basic",
-    }];
-    return (
-      <div className="body">
-        <div className="search">search</div>
-        <div className="RestroContainer">
-        {restro_List.map((restaurant) => (
-            <RestroCards key={restaurant.data.id} resData={restaurant} />
-          ))}      </div>
+  return (
+    <div className="body">
+      <div className="search">search</div>
+      <div className="filter">
+        <button className="filter-btn" onClick={() => {
+          const filterList= restroList.filter(
+            (res)=>res.data.avgRating > 4
+          );
+          setRestroList(filterList);
+        }}>
+          Top Rated restaurants
+        </button>
       </div>
-    );
-  };
-  export default BodyComponent;
+      <div className="RestroContainer">
+        {restroList.map((restaurant) => (
+          <RestroCards key={restaurant.data.id} resData={restaurant} />
+        ))}
+      </div>
+    </div>
+  );
+};
+export default BodyComponent;
