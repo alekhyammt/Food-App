@@ -1,0 +1,14 @@
+.restro-card{
+    width:200px;
+    background-color: rgba(213, 244, 226, 0.961);
+    padding: 5px;
+    margin: 5px;
+  }
+  .restro-card:hover{
+    cursor: pointer;
+    border: 1px solid black;
+  
+  }
+  .restro-logo{
+    width: 100%;
+  }
