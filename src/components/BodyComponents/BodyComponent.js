@@ -25,9 +25,10 @@ const BodyComponent = () => {
 
   return restroList?.length === 0 ? (
     <Shimmer />
-  ) : (
+  ) :  
+  (
     <div className="body">
-      <div className="search">
+      <div className="filter">
         <input
           type="text"
           placeholder="Search here"
@@ -37,18 +38,16 @@ const BodyComponent = () => {
           }}
         />
         <button
-          className="search-btn"
           onClick={() => {
             const SearchFilter = restroList.filter((res) =>
               res?.info?.name.toLowerCase().includes(inputValue.toLowerCase())
             );
+            {SearchFilter.length===0? "gggg":"nnn"}
             setFilterRestro(SearchFilter)
           }}
         >
           Search
         </button>
-      </div>
-      <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
@@ -60,7 +59,8 @@ const BodyComponent = () => {
         >
           Top Rated restaurants
         </button>
-      </div>
+        </div>
+
       <div className="RestroContainer">
         {filterRestro?.map((restaurant) => (
           <RestroCards key={restaurant?.info?.id} resData={restaurant} />

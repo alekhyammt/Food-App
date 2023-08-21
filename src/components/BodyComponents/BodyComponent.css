@@ -1,7 +1,15 @@
-.search{
-    padding: 10px;
-  }
+
   .RestroContainer{
     display: flex;
     flex-wrap: wrap;
   }
+  .filter{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+    padding: 20px;
+  }
+  .filter-btn{
+    margin: 10px;
+  }
+  
